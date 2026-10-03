@@ -1,0 +1,4 @@
+ts
+ts.exe
+*.o
+.vscode/
