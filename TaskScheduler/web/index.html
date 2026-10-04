@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Scheduler</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Task Scheduler</h1>
+        <p>Topological Sort + Priority Queue</p>
+
+        <div class="input-section">
+
+    <input
+        type="text"
+        id="taskName"
+        placeholder="Task name"
+    >
+
+    <input
+        type="number"
+        id="priority"
+        placeholder="Priority"
+    >
+
+    <input
+        type="number"
+        id="deadline"
+        placeholder="Deadline"
+    >
+
+    <input
+        type="number"
+        id="duration"
+        placeholder="Duration"
+    >
+
+    <button onclick="addTask()">
+        Add Task
+    </button>
+
+</div>
+
+<h2>Add Dependency</h2>
+
+<div class="input-section">
+
+    <input
+        type="number"
+        id="fromTask"
+        placeholder="Task ID (first)"
+    >
+
+    <input
+        type="number"
+        id="toTask"
+        placeholder="Depends task ID"
+    >
+
+    <button onclick="addDependency()">
+        Add Dependency
+    </button>
+
+</div>
+
+<h2>Tasks</h2>
+
+<ul id="taskList"></ul>
+
+<h2>Dependencies</h2>
+
+<ul id="dependencyList"></ul>
+
+<button class="schedule-btn" onclick="scheduleTasks()">
+    Generate Schedule
+</button>
+<button class="schedule-btn" onclick="findCriticalPath()">
+    Find Critical Path
+</button>
+
+<h2>Scheduled Output</h2>
+
+<div id="result">
+    No schedule generated yet.
+</div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
