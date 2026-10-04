@@ -1,29 +1,10 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+"""Compatibility entrypoint for the original root backend path."""
+from pathlib import Path
+import runpy
 
-app = Flask(__name__)
-CORS(app)
-
-@app.route("/")
-def home():
-    return "Task Scheduler API is running"
-
-@app.route("/critical-path", methods=["POST"])
-@app.route("/schedule", methods=["POST"])
-def schedule():
-    data = request.get_json()
-    tasks = data.get("tasks", [])
-
-    if not tasks:
-        return jsonify({"error": "No tasks received"}), 400
-
-    tasks = sorted(
-        tasks,
-        key=lambda x: x["priority"],
-        reverse=True
-    )
-
-    return jsonify({"schedule": tasks})
-
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+namespace = runpy.run_path(
+    str(Path(__file__).resolve().parents[1] / "TaskScheduler" / "backend" / "app.py"),
+    run_name=__name__,
+)
+if "app" in namespace:
+    app = namespace["app"]

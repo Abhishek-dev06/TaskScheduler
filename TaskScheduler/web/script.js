@@ -121,7 +121,7 @@ async function scheduleTasks() {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:5000/schedule",
+            "/schedule",
             {
                 method: "POST",
 
@@ -180,7 +180,7 @@ async function findCriticalPath() {
 
     try {
         const response = await fetch(
-            "http://127.0.0.1:5000/critical-path",
+            "/critical-path",
             {
                 method: "POST",
                 headers: {
